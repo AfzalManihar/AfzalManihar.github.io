@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Afzal Manihar• Data Analyst</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <!-- Bootstrap (optional, used for grid/utilities) -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- AOS for scroll animations -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+  <!-- <script src="index.js"></script> -->
+
+
+  <style>
+    :root{
+      /* Palette inspired by provided theme */
+      --bg:#0c0c0c;            /* near-black */
+      --bg-elev:#141313;       /* dark surface */
+      --text:#EFECE3;          /* warm off-white */
+      --muted:#b7b0a6;         /* muted text */
+      --accent:#A87549;        /* golden brown */
+      --accent-2:#744540;      /* cocoa/maroon */
+      --accent-3:#D8C8B4;      /* beige */
+      --chip:#312a26;          /* pill bg */
+      --card-border:rgba(255,255,255,.08);
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+      --radius:18px;
+    }
+
+    html,body{background:var(--bg); color:var(--text); font-family:"DM Sans", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";}
+    a{color:var(--accent);}
+    .container-wide{max-width:1140px}
+
+    /* NAV */
+    .nav-wrap{position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(8px); background:rgba(12,12,12,.6); border-bottom:1px solid var(--card-border)}
+    .brand{font-weight:900; letter-spacing:.5px}
+    .brand strong{color:var(--accent)}
+    .nav-link{color:var(--text)!important; opacity:.85; font-weight:600}
+    .nav-link:hover{opacity:1; color:var(--accent)!important}
+
+    /* HERO */
+    .hero{position:relative; overflow:hidden; background:linear-gradient(120deg, rgba(168,117,73,.08), rgba(116,69,64,.08) 40%, transparent 70%), radial-gradient(1200px 600px at 120% -10%, rgba(255,255,255,.08), transparent 60%);}
+    .hero h1{font-size: clamp(2.4rem, 5vw, 4.6rem); line-height:1.05; letter-spacing:-.5px; font-weight:900}
+    .hero .sub{color:var(--muted); max-width:560px}
+    .chip{display:inline-block; background:var(--chip); color:var(--accent-3); border:1px solid var(--card-border); padding:8px 14px; border-radius:999px; font-size:.9rem; letter-spacing:.3px}
+    .cta-btn{background:var(--accent); color:#111; border:none; border-radius:999px; padding:12px 22px; font-weight:800; box-shadow:0 6px 20px rgba(168,117,73,.35); transform:translateY(0); transition:transform .25s ease, box-shadow .25s ease}
+    .cta-btn:hover{transform:translateY(-2px); box-shadow:0 12px 30px rgba(168,117,73,.45)}
+    .hero-img{border-radius:50%; width:300px; height:300px; object-fit:cover; box-shadow:0 25px 60px rgba(0,0,0,.55), inset 0 0 0 8px rgba(216,200,180,.08)}
+
+    /* SOCIAL LINKS */
+      .button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Pill-style button base */
+.social-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.progress-bar {
+    height: 80px;
+    font-size: 13px; /* Smaller text */
+    font-weight: bold;
+    text-align: center;
+    line-height: 80px; /* Vertically center */
+    color: #fff; /* Always white for contrast */
+    transition: width 0.6s ease;
+  }
+  .progress {
+    background-color: #333;
+    height: 80px; /* More thickness */
+    border-radius: 15px;
+    overflow: hidden;
+  }
+
+/* GitHub pill */
+.social-pill.github {
+  background: #2d2d2d;
+  color: #fff;
+}
+.social-pill.github:hover {
+  background: #000;
+  transform: translateY(-2px);
+}
+
+/* LinkedIn pill */
+.social-pill.linkedin {
+  background: #0077b5;
+  color: #fff;
+}
+.social-pill.linkedin:hover {
+  background: #005582;
+  transform: translateY(-2px);
+}
+
+.social-pill svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  .social-pill {
+    width: 100%;
+    justify-content: center;
+    font-size: 15px;
+  }
+}
+
+    /* SECTION HEADERS */
+    .section-title{font-weight:900; letter-spacing:-.3px; margin-bottom:8px}
+    .section-kicker{color:var(--muted); text-transform:uppercase; letter-spacing:2.2px; font-size:.8rem}
+
+    /* SKILLS */
+    .skill-card{background:var(--bg-elev); border:1px solid var(--card-border); border-radius:var(--radius); padding:22px; height:100%; box-shadow:var(--shadow)}
+    .progress{height:10px; background:#1a1918; border-radius:999px; overflow:hidden}
+    .progress > div{height:100%; background:linear-gradient(90deg, var(--accent), var(--accent-2));}
+    .skill-pill{display:inline-flex; align-items:center; gap:10px; background:var(--chip); color:var(--text); border:1px solid var(--card-border); border-radius:999px; padding:8px 14px; margin:6px 6px 0 0}
+    .skill-dot{width:8px; height:8px; border-radius:50%; background:var(--accent)}
+
+    /* PROJECTS */
+    .project-card{position:relative; background:linear-gradient(180deg, #141313, #0f0e0e); border:1px solid var(--card-border); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); transition:transform .25s ease, box-shadow .25s ease}
+    .project-card:hover{transform:translateY(-6px); box-shadow:0 22px 40px rgba(0,0,0,.45)}
+    .project-thumb{aspect-ratio: 16/10; width:100%; object-fit:cover; filter:saturate(.92) contrast(1.05)}
+    .project-body{padding:18px 18px 20px}
+    .tag{display:inline-block; font-size:.75rem; padding:6px 10px; border-radius:999px; background:rgba(168,117,73,.12); color:var(--accent-3); border:1px solid var(--card-border); margin-right:8px}
+    .project-link{font-weight:700}
+
+    /* CONTACT */
+    .contact{background:linear-gradient(180deg, rgba(116,69,64,.2), rgba(12,12,12,1)); border-top:1px solid var(--card-border)}
+    .contact-card{background:var(--bg-elev); border:1px solid var(--card-border); border-radius:var(--radius); padding:28px; box-shadow:var(--shadow)}
+    .form-control{background:#151414; border:1px solid #2a2826; color:var(--text); border-radius:12px}
+    .form-control:focus{border-color:var(--accent); box-shadow:0 0 0 0.2rem rgba(168,117,73,.15)}
+    .submit-btn{background:linear-gradient(90deg, var(--accent), var(--accent-2)); color:#0f0e0e; border:none; border-radius:12px; font-weight:800; padding:12px 18px}
+
+    /* FOOTER */
+    footer{border-top:1px solid var(--card-border); background:#0b0b0b}
+    .foot-link{color:var(--muted)}
+    .foot-link:hover{color:var(--accent)}
+
+    /* micro-animations */
+    .soft-reveal{animation:softReveal .8s ease both}
+    @keyframes softReveal{from{opacity:0; transform:translateY(10px)} to{opacity:1; transform:translateY(0)}}
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <div class="nav-wrap">
+    <div class="container container-wide">
+      <nav class="navbar navbar-expand-lg navbar-dark px-0">
+        <a class="navbar-brand brand" href="#home"><strong></strong>  Data Analyst</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navMenu">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+            <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+            <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <header id="home" class="hero py-5 py-md-6">
+    <div class="container container-wide py-5">
+      <div class="row align-items-center">
+        <div class="col-md-7 mb-4 mb-md-0" data-aos="fade-right">
+          <span class="chip mb-3 soft-reveal">Weaver of actionable insights</span>
+          <h1 class="mb-3">Afzal Manihar <br/> Data Analyst</h1>
+          <p class="sub mb-4">I am a passionate data professional with 1 years of hands-on experience. Driven to derive actionable insights from complex datasets.<br/> I develop insightful dashboards and reports that empower decision-makers.</p>
+          <div class="d-flex align-items-center flex-wrap gap-2">
+            <a href="#contact" class="btn cta-btn mr-4 mb-2">Contact Me</a>
+
+            <span class="mr-3 mb-2"><span class="skill-dot"></span> 
+            <a class="skill-pill" href="https://www.linkedin.com/in/afzal-manihar-bb0183308/" target="_blank" rel="noreferrer">LinkedIn</a></span>
+            <span class="mr-3 mb-2"><span class="skill-dot" style="background:var(--accent-2)"></span>
+            <a class="skill-pill" href="https://github.com/AfzalManihar" target="_blank" rel="noreferrer">GitHub</a></span>
+            <span class="mr-3 mb-2"><span class="skill-dot" style="background:var(--accent-2)"></span> 
+            <a class="skill-pill" href="********Resume Link********" target="_blank" rel="noreferrer">Resume</a></span>
+          </div>
+        </div>
+        <div class="col-md-5 text-center" data-aos="fade-left">
+          <img class="hero-img" src="./Images/Linkedin image.png" alt="Afzal Manihar"/>
+          <br/>
+
+      
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  
+  <section id="skills" style="background-color: #111; color: #fff; padding: 50px 0;">
+  <div class="container">
+   
+
+
+
+    <!-- Skills Section -->
+<section id="skills" style="background-color: #111; color: #fff; padding: 50px 0;">
+  <div class="container">
+    <h2 class="section-title text-center mb-5">Skills & Expertise</h2>
+    <div class="skill-mf">
+
+    <div class="d-flex flex-wrap justify-content-center gap-3 mb-5">
+      <span class="skill-pill">SQL • Python • Power BI</span>
+      <span class="skill-pill">Data Cleaning & Transformation</span>
+      <span class="skill-pill">Dashboards & Visual Storytelling</span>
+      <span class="skill-pill">Machine Learning Basics</span>
+      
+    </div>
+
+      <!-- Skill Item -->
+      <div class="mb-4">
+        <div class="d-flex justify-content-between">
+          <span><strong>SQL</strong></span>
+          <span>80%</span>
+        </div>
+        <div class="progress" style="height: 12px; border-radius: 20px; overflow: hidden;">
+          <div class="progress-bar bg-warning" style="width: 80%; border-radius: 20px;"></div>
+        </div>
+      </div>
+
+      <!-- Skill Item -->
+      <div class="mb-4">
+        <div class="d-flex justify-content-between">
+          <span><strong>Python</strong></span>
+          <span>85%</span>
+        </div>
+        <div class="progress" style="height: 12px; border-radius: 20px; overflow: hidden;">
+          <div class="progress-bar bg-info" style="width: 85%; border-radius: 20px;"></div>
+        </div>
+      </div>
+
+      <!-- Skill Item -->
+      <div class="mb-4">
+        <div class="d-flex justify-content-between">
+          <span><strong>Power BI </strong></span>
+          <span>90%</span>
+        </div>
+        <div class="progress" style="height: 12px; border-radius: 20px; overflow: hidden;">
+          <div class="progress-bar bg-success" style="width: 90%; border-radius: 20px;"></div>
+        </div>
+      </div>
+
+      <!-- Skill Item -->
+      <div class="mb-4">
+        <div class="d-flex justify-content-between">
+          <span><strong>Python Libraries</strong> <small>[Numpy | Pandas | Matplotlib | Seaborn | Scikit-learn]</small></span>
+          <span>88%</span>
+        </div>
+        <div class="progress" style="height: 12px; border-radius: 20px; overflow: hidden;">
+          <div class="progress-bar bg-primary" style="width: 88%; border-radius: 20px;"></div>
+        </div>
+      </div>
+
+      <!-- Skill Item -->
+      <div class="mb-4">
+        <div class="d-flex justify-content-between">
+          <span><strong>Tableau</strong></span>
+          <span>85%</span>
+        </div>
+        <div class="progress" style="height: 12px; border-radius: 20px; overflow: hidden;">
+          <div class="progress-bar bg-dark" style="width: 85%; border-radius: 20px;"></div>
+        </div>
+      </div>
+
+      <!-- Skill Item -->
+      <div class="mb-4">
+        <div class="d-flex justify-content-between">
+          <span><strong>Excel</strong></span>
+          <span>85%</span>
+        </div>
+        <div class="progress" style="height: 12px; border-radius: 20px; overflow: hidden;">
+          <div class="progress-bar bg-primary" style="width: 85%; border-radius: 20px;"></div>
+        </div>
+      </div>
+
+      <!-- Skill Item -->
+      <div class="mb-4">
+        <div class="d-flex justify-content-between">
+          <span><strong>Machine Learning Basics </strong></span>
+          <span>75%</span>
+        </div>
+        <div class="progress" style="height: 12px; border-radius: 20px; overflow: hidden;">
+          <div class="progress-bar bg-secondary" style="width: 75%; border-radius: 20px;"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  </div>
+</section>
+
+
+  <!-- EXPERIENCE 1 -->
+ <section id="experience" class="py-5">
+  <div class="container container-wide">
+    <div class="row align-items-end mb-3">
+      <div class="col-md-8">
+        <div class="section-kicker">Professional Path</div>
+        <h2 class="section-title">Experience</h2>
+      </div>
+    </div>
+    <div class="row">
+
+      <!-- HAB PHARMA EXPERIENCE -->
+      <div class="col-md-12 mb-4" data-aos="fade-up">
+        <div class="skill-card">
+          <h5 class="mb-1">HAB Pharmaceuticals & Research Limited </h5>
+          <p class="mb-1">July 12, 2024 – August 20, 2025</p>
+          <p>
+            Worked as a <strong>Data Analyst</strong> where I contributed to data-driven decision-making and reporting for business stakeholders.
+          </p>
+          <ul style="margin-top:8px; line-height:1.6;">
+            <li>Gathered & analyzed complex datasets to provide actionable insights.</li>
+            <li>Developed data models to support business decision-making.</li>
+            <li>Created reports & dashboards using Excel / Power BI.</li>
+            <li>Collaborated with cross-functional teams for project success.</li>
+            <li>Delivered accurate outputs under tight deadlines.</li>
+          </ul>
+        </div>
+      </div>
+               <!-- EXPERIENCE 2 -->
+      <!-- YBI FOUNDATION INTERNSHIP -->
+      <div class="col-md-12 mb-4" data-aos="fade-up" data-aos-delay="150">
+        <div class="skill-card">
+          <h5 class="mb-1">Python Programming Intern | Ybi Foundation</h5>
+          <p class="mb-1">Completed: Sep 2024 (1 Month)</p>
+          <p>
+            Successfully completed <strong>Python Programming Internship</strong> at 
+            <strong>Ybi Foundation</strong>, where I gained hands-on experience in 
+            Python coding, solving projects, and developing analytical problem-solving skills.
+          </p>
+          <p><strong>Credential ID:</strong> IA8EA6PKFVA1Z</p>
+
+          <!-- Certificate image or link -->
+          <a href="https://drive.google.com/file/d/1Gg8dlwI0bu5iIMAtW7oTZHfVjp8PtLoL/view?usp=sharing" 
+             target="_blank" class="btn btn-sm btn-primary mt-2">View Certificate</a>
+          <a href="https://drive.google.com/uc?export=download&id=1Gg8dlwI0bu5iIMAtW7oTZHfVjp8PtLoL"
+             download class="btn btn-sm btn-outline-secondary mt-2">Download PDF</a>
+        </div>
+      </div>
+</div>
+  </div>
+</section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="py-5">
+  <div class="container container-wide">
+    <div class="row align-items-end mb-3">
+      <div class="col-md-8">
+        <div class="section-kicker">Case studies</div>
+        <h2 class="section-title">Projects</h2>
+      </div>
+    </div>
+  <div class="row">
+      <!-- Project 1 -->
+      <div class="col-md-4 mb-4" data-aos="zoom-in">
+        <article class="project-card">
+          <img src="./Images/Python_E-Commerce.png" alt="Banking dashboard" class="project-thumb">
+          <div class="project-body">
+            <div class="mb-2">
+              <span class="tag">Python</span> 
+              <!-- <span class="tag"></span> 
+              <span class="tag"></span> -->
+            </div>
+
+            <h5 class="mb-2">Python - Sales Analysis</h5>
+            <p class="mb-3" style="color:var(--muted)">Developed E-Commerce Sales Analysis uses Pandas, NumPy, Matplotlib, and Seaborn to clean, manipulate, and visualize sales data, enabling insights into customer behavior and optimized sales strategies.</p>
+            <a class="project-link" href="https://github.com/AfzalManihar/Python_E-Commerce_Sales_Analysis">View Project →</a>
+          </div>
+        </article>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="120">
+        <article class="project-card">
+          <img src="./Images/MusicDatabaseSchema.png" alt="MusicDatabaseSchema.png" class="project-thumb">
+          <div class="project-body">
+            <div class="mb-2">
+              <span class="tag">SQL</span> 
+              <!-- <span class="tag">Python</span>  -->
+              <span class="tag">EDA</span> 
+              <!-- <span class="tag">ML</span></div> -->
+
+            <h5 class="mb-2">SQL - Music Store Analysis</h5>
+            <p class="mb-3" style="color:var(--muted)">Developed Music Store Database using SQL This project focuses on analyzing the Online The goal of this project is to understand the business growth of the music store by answering various analytical questions from the dataset.</p>
+            <a class="project-link" href="https://github.com/AfzalManihar/SQL_Music_Store_Analysis">View Project →</a>
+          </div>
+        </article>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="220">
+        <article class="project-card">
+          <img src="./Images/Forcasting_Final_look.png" alt="Excel Forecasting" class="project-thumb">
+          <div class="project-body">
+            <div class="mb-2">
+              <span class="tag">Excel</span> 
+              <span class="tag">ML</span>
+
+            </div>
+            <h5 class="mb-2">Excel Youtube Views Forecasting</h5>
+            <p class="mb-3" style="color:var(--muted)">Perform Data Forecasting Project focuses on predicting YouTube channel Views using Microsoft Excel.This project demonstrates how Excel built-in tools like Forecast Sheet, Trendline, and Forecast functions can be used for time-series forecasting without coding.</p>
+            <a class="project-link" href="https://github.com/AfzalManihar/Excel_Data_Forecasting_Project">View Project →</a>
+          </div>
+        </article>
+      </div>
+
+      <!-- Project 4 -->
+      <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="320">
+        <article class="project-card">
+          <img src="./Images/Power_BI.png" alt="Power Bi analysis" class="project-thumb">
+          <div class="project-body">
+            <div class="mb-2">
+              <span class="tag">Power Bi</span> </div>
+            <h5 class="mb-2">Power Bi E-commerce Analysis</h5>
+            <p class="mb-3" style="color:var(--muted)">Developed E-commerce Store Sales Analysis Project uncovers insights from online retail sales data, focusing on customer purchases, transactions, and browsing behavior in the digital era.</p>
+            <a class="project-link" href="https://github.com/AfzalManihar/E-Commerce-Power-Bi-DashBoard">View Project →</a>
+          </div>
+        </article>
+      </div>
+
+      <!-- Project 5 -->
+      <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="420">
+        <article class="project-card">
+          <img src="./Images/Tableau_Final_Dashboard.png" alt="Pending analysis" class="project-thumb">
+          <div class="project-body">
+            <div class="mb-2">
+              <span class="tag">Tableau</span> 
+              <span class="tag">Excel</span>  
+              <!-- <span class="tag"></span></div>  -->
+            <h5 class="mb-2">Tableau Banking Data Analysis </h5>
+            <p class="mb-3" style="color:var(--muted)">The dashboard offers insights on stakeholders, insurers, and policy performance, helping analyze premium trends, profitability, and asset distribution for informed, data-driven decisions.</p>
+            <a class="project-link" href="https://github.com/AfzalManihar/Tableau_Banking_Data_Analytics_Project">View Project →</a>
+          </div>
+        </article>
+      </div>
+      <!-- Project 6 -->
+      <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="420">
+        <article class="project-card">
+          <img src="./Images/Excel_Store_Analysis_final_look.png" alt="Store analysis" class="project-thumb">
+          <div class="project-body">
+            <div class="mb-2">
+              <span class="tag">Advanced Excel</span> 
+              <!-- <span class="tag"></span>  
+              <span class="tag"></span></div> -->
+            <h5 class="mb-2">Excel - Store Sales Analysis </h5>
+            <p class="mb-3" style="color:var(--muted)">Perform Store Sales Analysis Project focuses on analyzing sales data to uncover trends, customer behavior, and key insights that drive better business decisions.</p>
+            <a class="project-link" href="https://github.com/AfzalManihar/Excel_Store_Sales_Analysis">View Project →</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- CERTIFICATES & ACHIEVEMENTS -->
+<section id="certificates" class="py-5">
+  <div class="container container-wide">
+    <div class="row align-items-end mb-3">
+      <div class="col-md-8">
+        <div class="section-kicker">Milestones</div>
+        <h2 class="section-title">Certificates & Achievements</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 mb-4" data-aos="fade-up">
+        <div class="skill-card">
+          <ul style="margin:0; padding-left:18px;">
+            <li>Python for Data Science – IBM</li>
+            <li>SQL for Data Analysis – HackerRank</li>
+            <li>Certified AWS Cloud Practitioner</li>
+           </ul>
+        </div>
+      </div>
+      <div class="col-md-6 mb-4" data-aos="fade-up" data-aos-delay="150">
+        <div class="skill-card">
+          <ul style="margin:0; padding-left:18px;">
+            <li>Gen AI Certification – Ws CubeTech</li>
+             <li>Microsoft Power BI DAX Certification – Ws CubeTech</li>
+             <li>Blinkit Inventory & Supply Chain Analytics – Ws CubeTech</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" class="py-5">
+  <div class="container container-wide">
+    <div class="row align-items-end mb-3">
+      <div class="col-md-8">
+        <div class="section-kicker">Learning Journey</div>
+        <h2 class="section-title">Education</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 mb-4" data-aos="fade-up">
+        <div class="skill-card">
+          <h5 class="mb-1">B.S.C in Information Technology</h5>
+          <p style="color:var(--muted)">Shree Shankar Narayan College (2022 – 2024)</p>
+          <p>Graduated with strong foundation in software development, data analysis, and database systems.</p>
+        </div>
+      </div>
+      <div class="col-md-6 mb-4" data-aos="fade-up" data-aos-delay="150">
+        <div class="skill-card">
+          <h5 class="mb-1">HSC – Commerce</h5>
+          <p style="color:var(--muted)">State Board (2018 – 2020)</p>
+          <p>Specialized in Information Technology & Mathematics, laying groundwork for problem-solving skills.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact py-5">
+    <div class="container container-wide">
+      <div class="row justify-content-center">
+        <div class="col-lg-8" data-aos="fade-up">
+          <div class="contact-card">
+            <div class="row">
+              <div class="col-md-6 mb-4 mb-md-0">
+                <div class="section-kicker">Let’s talk</div>
+                <h3 class="section-title mb-3">Contact Me</h3>
+                <p style="color:var(--muted)">Want to collaborate or discuss a role? Drop a note and I’ll get back within 1–2 days.</p>
+                <div class="d-flex align-items-center mt-3">
+                  <a class="skill-pill" href="https://www.linkedin.com/in/afzal-manihar-bb0183308/" target="_blank" rel="noreferrer">LinkedIn</a>
+                  <a class="skill-pill" href="https://github.com/AfzalManihar" target="_blank" rel="noreferrer">GitHub</a>
+                </div>
+              </div>
+                <div class="col-md-6">
+                <!-- <form action="mailto:afzalmanihar429@gmail.com" method="post" enctype="text/plain"> -->
+                  <form action="https://formspree.io/f/xgvljova" method="POST">
+                  <div class="form-group">
+                    <label for="email">Your Email</label>
+                    <!-- <input id="email" name="email" class="form-control" type="email" required /> -->
+                     <input id="email" name="_replyto" class="form-control" type="email" placeholder="you@example.com" required />
+                  </div>
+                  <div class="form-group">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="message" class="form-control" rows="4" required></textarea>
+                  </div>
+                  <button class="submit-btn w-100" type="submit">Send Message</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+<footer class="py-4" style="text-align: center;">
+  <div class="container container-wide">
+    <p class="mb-0" style="color: var(--muted);">
+      © <span id="year"></span> Afzal Manihar. All rights reserved.
+    </p>
+  </div>
+</footer>
+
+
+  <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({duration: 900, once: true, easing: 'ease-out-cubic'});
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
