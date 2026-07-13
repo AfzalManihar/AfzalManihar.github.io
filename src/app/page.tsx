@@ -49,7 +49,7 @@ export default function Home() {
       } else {
         setStatus({ loading: false, success: null, error: "Something went wrong. Please try again." });
       }
-    } catch (err) {
+    } catch  {
       setStatus({ loading: false, success: null, error: "Network error. Please try again." });
     }
   };
