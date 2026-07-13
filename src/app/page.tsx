@@ -28,7 +28,7 @@ function Marquee() {
 export default function Home() { 
   const { scrollY } = useScroll(); 
   const heroY = useTransform(scrollY, [0, 700], [0, 110]); 
-  const [status, setStatus] = useState({ loading: false, success: null, error: null });
+  const [status, setStatus] = useState<{ loading: boolean; success: string | null; error: string | null }>({ loading: false, success: null, error: null });
 
   const handleContactSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
