@@ -1,0 +1,4 @@
+"use client";
+import { useEffect, useState } from "react";
+const words = ["decisions.", "products.", "insight.", "impact."];
+export function TypeCycle() { const [word, setWord] = useState(0); const [count, setCount] = useState(0); const [deleting, setDeleting] = useState(false); useEffect(() => { const value = words[word]; const done = count === value.length; const delay = deleting ? 45 : done ? 1450 : 85; const timer = setTimeout(() => { if (!deleting && done) setDeleting(true); else if (deleting && count === 0) { setDeleting(false); setWord((word + 1) % words.length); } else setCount((n) => n + (deleting ? -1 : 1)); }, delay); return () => clearTimeout(timer); }, [count, deleting, word]); return <span className="text-gradient">{words[word].slice(0, count)}<span className="ml-1 inline-block h-[.9em] w-[2px] animate-pulse bg-cyan align-[-.05em]" /></span>; }

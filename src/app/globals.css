@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: dark; }
+* { scroll-behavior: smooth; }
+body { @apply bg-ink font-sans text-slate-100 antialiased; background-color: #080d17; background-image: radial-gradient(circle at 75% 0%, rgba(34,211,238,.13), transparent 30rem), radial-gradient(circle at 0% 45%, rgba(163,230,53,.07), transparent 28rem); }
+::selection { @apply bg-cyan text-ink; }
+.grid-pattern { background-image: linear-gradient(rgba(148,163,184,.075) 1px, transparent 1px), linear-gradient(90deg, rgba(148,163,184,.075) 1px, transparent 1px); background-size: 44px 44px; }
+.section-wrap { @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10; }
+.eyebrow { @apply font-mono text-[11px] font-medium uppercase tracking-[.2em] text-cyan; }
+.section-title { @apply mt-3 font-display text-3xl font-bold tracking-tight text-white sm:text-5xl; }
+.noise { position: fixed; inset: 0; z-index: 50; pointer-events: none; opacity: .025; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E"); }
+.glass { @apply border border-white/[.09] bg-white/[.045] shadow-[0_20px_70px_rgba(0,0,0,.22)] backdrop-blur-xl; }
+.glow-line { background: linear-gradient(90deg, transparent, rgba(34,211,238,.8), rgba(163,230,53,.8), transparent); }
+.text-gradient { background: linear-gradient(110deg, #f8fafc 20%, #67e8f9 53%, #d9f99d 88%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.liquid-orb { filter: blur(1px); animation: float 10s ease-in-out infinite; }
+.liquid-orb:nth-child(2) { animation-delay: -4s; animation-duration: 13s; }
+@keyframes float { 50% { transform: translate3d(4%, -8%, 0) scale(1.08); } }
+@keyframes marquee { to { transform: translateX(-50%); } }
+.marquee-track { width: max-content; animation: marquee 30s linear infinite; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; } }
