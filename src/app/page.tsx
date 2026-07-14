@@ -23,37 +23,51 @@ export default function Home() {
   const { scrollY } = useScroll(); 
   const heroY = useTransform(scrollY, [0, 700], [0, 110]); 
 
-  // 2. Submit Handle karne ki state aur function joda
+  
   const [status, setStatus] = useState<{ loading: boolean; success: string | null; error: string | null }>({ loading: false, success: null, error: null });
 
   const handleContactSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setStatus({ loading: true, success: null, error: null });
+  e.preventDefault();
 
-    const formData = new FormData(e.currentTarget);
-    const data = {
-      name: formData.get("name"),
-      email: formData.get("email"),
-      message: formData.get("message"),
-    };
+  setStatus({
+    loading: true,
+    success: null,
+    error: null,
+  });
 
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
+  const formData = new FormData(e.currentTarget);
 
-      if (response.ok) {
-        setStatus({ loading: false, success: "Message sent successfully!", error: null });
-        (e.target as HTMLFormElement).reset(); 
-      } else {
-        setStatus({ loading: false, success: null, error: "Something went wrong. Please try again." });
-      }
-    } catch  {
-      setStatus({ loading: false, success: null, error: "Network error. Please try again." });
-    }
+  const templateParams = {
+    name: formData.get("name"),
+    email: formData.get("email"),
+    message: formData.get("message"),
   };
+
+  try {
+    await emailjs.send(
+      "service_mcqsze5",
+      "template_mpvmw9j",
+      templateParams,
+      "ZSrqqYgc9yuJF-CJu"
+    );
+
+    setStatus({
+      loading: false,
+      success: "Message sent successfully!",
+      error: null,
+    });
+
+    (e.target as HTMLFormElement).reset();
+  } catch (error) {
+    console.error(error);
+
+    setStatus({
+      loading: false,
+      success: null,
+      error: "Something went wrong. Please try again.",
+    });
+  }
+};
 
   return <main id="top"><Preloader /><Navigation /><section className="relative isolate overflow-hidden border-b border-white/[.07]"><div className="grid-pattern absolute inset-0 opacity-40 [mask-image:linear-gradient(to_bottom,black,transparent)]" /><div className="liquid-orb absolute -right-28 top-20 -z-10 h-[30rem] w-[30rem] rounded-full bg-cyan/[.11] blur-[100px]" /><div className="liquid-orb absolute -left-32 top-64 -z-10 h-96 w-96 rounded-full bg-lime/[.08] blur-[105px]" /><motion.div style={{ y: heroY }} className="section-wrap grid min-h-[720px] items-center gap-8 py-20 lg:grid-cols-[1.13fr_.87fr] lg:py-28"><div><motion.p initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .9 }} className="eyebrow flex items-center gap-3"><i className="h-2 w-2 animate-pulse rounded-full bg-lime" /> Available for select opportunities</motion.p><motion.h1 initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .98, duration: .75, ease: [0.22, 1, 0.36, 1] }} className="mt-6 max-w-4xl font-display text-5xl font-bold leading-[1.02] tracking-[-.055em] text-white sm:text-7xl xl:text-[5.35rem]">I turn noisy data into <TypeCycle /></motion.h1><motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.25 }} className="mt-8 max-w-xl text-lg leading-8 text-slate-400">Applied data scientist and AI engineer building decision-ready machine learning systems with precision, empathy, and product taste.</motion.p><motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.4 }} className="mt-10 flex flex-wrap gap-3"><Button asChild className="shadow-[0_10px_40px_rgba(34,211,238,.2)]"><a href="#work">Explore selected work <FiArrowDown /></a></Button><Button asChild variant="outline" className="border-white/[.14] bg-white/[.04]"><a href="#resume"><FiDownload /> Download resume</a></Button></motion.div><div className="mt-14 flex flex-wrap gap-8 border-t border-white/[.1] pt-7"><div><strong className="font-display text-2xl text-white">05</strong><span className="ml-2 text-xs uppercase tracking-wider text-slate-500">Applied projects</span></div><div><strong className="font-display text-2xl text-white">03</strong><span className="ml-2 text-xs uppercase tracking-wider text-slate-500">ML domains</span></div></div></div><HeroOrb /></motion.div><div className="absolute bottom-5 left-1/2 hidden -translate-x-1/2 items-center gap-3 font-mono text-[10px] uppercase tracking-[.2em] text-slate-500 lg:flex"><span className="h-px w-10 bg-slate-700" /> Scroll to explore <span className="h-px w-10 bg-slate-700" /></div></section><Marquee />
   <section id="about" className="section-wrap grid gap-11 py-28 lg:grid-cols-[.76fr_1.24fr]"><ScrollReveal><p className="eyebrow">01 / About</p><h2 className="section-title">Data-first.<br /><span className="text-slate-500">Product-minded.</span></h2></ScrollReveal><ScrollReveal delay={.1} className="max-w-2xl"><p className="text-xl leading-9 text-slate-300">I treat AI as a practical discipline: understand the question, interrogate the data, validate the model, then make the outcome usable.</p><p className="mt-5 leading-8 text-slate-400">My work spans predictive modeling, data analysis, and LLM applications—with a particular interest in systems that make complex information clearer, faster, and more actionable.</p><div className="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/[.09] bg-white/[.07] sm:grid-cols-3">{["Frame", "Explore", "Model", "Evaluate", "Deploy", "Learn"].map((step, index) => <div className="group bg-[#0b1220]/80 p-5 transition hover:bg-white/[.06]" key={step}><span className="font-mono text-xs text-cyan/70">0{index + 1}</span><p className="mt-2 font-semibold text-white transition group-hover:translate-x-1">{step}</p></div>)}</div></ScrollReveal></section>
