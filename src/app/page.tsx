@@ -1,6 +1,6 @@
 "use client";
 import emailjs from "@emailjs/browser";
-import { useState } from "react"; // 1. State import joda
+import React, { useState } from "react";// 1. State import joda
 import { motion, useScroll, useTransform } from "framer-motion";
 import { FiArrowDown, FiArrowUpRight, FiDownload, FiGithub, FiLinkedin, FiMail, FiMapPin } from "react-icons/fi";
 import { SiPython, SiPytorch, SiPostgresql } from "react-icons/si";
