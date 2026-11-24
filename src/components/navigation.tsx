@@ -43,7 +43,7 @@ export function Navigation() {
         <div className="hidden md:block">
           <Button asChild variant="outline" className="border-white/[.13] bg-white/[.03] py-2">
             <a
-              href="https://drive.google.com/file/d/1jRNCgKEr-Jlr-EdbfobuGrOM4nyf7DTn/view?usp=sharing"
+              href="/Afzal_Manihar_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
             >
