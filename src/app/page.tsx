@@ -82,8 +82,8 @@ export default function Home() {
       <div className="grid gap-12 rounded-[2rem] border border-white/[.1] bg-white/[.025] p-7 shadow-2xl backdrop-blur-xl sm:p-12 lg:grid-cols-[1fr_.9fr]">
         <div>
           <p className="eyebrow">07 / Contact</p>
-          <h2 className="section-title">Let's build<br /><span className="text-gradient">something useful.</span></h2>
-          <p className="mt-6 max-w-lg leading-8 text-slate-400">I'm open to Agentic AI Developer, Generative AI Developer, and AI/ML Engineer roles. If you are building agent-powered products, I'd love to connect.</p>
+          <h2 className="section-title">Let&apos;s build<br /><span className="text-gradient">something useful.</span></h2>
+          <p className="mt-6 max-w-lg leading-8 text-slate-400">I&apos;m open to Agentic AI Developer, Generative AI Developer, and AI/ML Engineer roles. If you are building agent-powered products, I&apos;d love to connect.</p>
           <div className="mt-10 space-y-4 text-sm">
             <a className="flex items-center gap-3 text-slate-200 transition hover:translate-x-1 hover:text-cyan" href="mailto:afzalmanihar429@gmail.com"><FiMail className="text-cyan" /> afzalmanihar429@gmail.com</a>
             <a className="flex items-center gap-3 text-slate-200 transition hover:translate-x-1 hover:text-cyan" href="https://www.linkedin.com/in/afzal-manihar-bb0183308/" target="_blank" rel="noreferrer"><FiLinkedin className="text-cyan" /> LinkedIn</a>
@@ -116,6 +116,7 @@ export default function Home() {
 
   <footer className="border-t border-white/[.07] py-8"><div className="section-wrap flex flex-wrap items-center justify-between gap-4 text-sm text-slate-500"><p>© 2026 Afzal Manihar. All rights reserved.</p><div className="flex gap-4"><a href="#top" className="hover:text-cyan">Back to top</a><a href="https://github.com/AfzalManihar" className="hover:text-cyan">GitHub</a></div></div></footer></main>; 
 }
+
 
 
 
