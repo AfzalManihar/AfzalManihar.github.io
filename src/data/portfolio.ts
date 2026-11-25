@@ -9,7 +9,7 @@ export const projects: Project[] = [
     result: "Retrieval quality tracked with Recall@10 on 60 dev and 40 test queries.",
     image: "/projects/priorly.svg",
     github: "https://github.com/AfzalManihar/Priorly-AI-Patent-Search",
-    demo: "https://priorly-ai-patent-search.vercel.app/",
+    demo: "https://priorly-ai-patent-search.vercel.app/wake.html",
     accent: "cyan"
   },
   {
@@ -37,7 +37,7 @@ export const projects: Project[] = [
     result: "Lessons validated using Gagné and Merrill instructional frameworks.",
     image: "/projects/lumina.svg",
     github: "https://github.com/AfzalManihar/lumina-ai-tutor",
-    demo: "https://lumina-ai-tutor-b5229.containers.snapdeploy.app/app",
+    demo: "https://lumina-ai-tutor-b5229.containers.snapdeploy.app/",
     accent: "cyan"
   },
   {
